@@ -1,0 +1,4 @@
+name: RealisticBlockPlace
+version: '${version}'
+main: io.github.vitelotte.realisticblockplace.RealisticBlockPlace
+api-version: '1.20'
