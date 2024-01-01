@@ -10,7 +10,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class RealisticBlockPlace extends JavaPlugin {
     public TextComponent chatPrefixComponent = Component.text("Server", NamedTextColor.AQUA);
-    public Material supportingBlock = Material.BEDROCK;
 
     @Override
     public void onEnable() {
