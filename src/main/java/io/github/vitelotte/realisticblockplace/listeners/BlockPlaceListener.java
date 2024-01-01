@@ -22,9 +22,10 @@ public class BlockPlaceListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
+        player.sendMessage(event.getBlockPlaced().getLocation().toString());
         if (!player.isOp()) {
             Block block = event.getBlock();
-            if (!this.hasSupportingBlock(block.getLocation()) || !block.getBlockData().getMaterial().equals(plugin.supportingBlock)) {
+            if (!this.hasSupportingBlock(block.getLocation()) && !block.getBlockData().getMaterial().equals(plugin.supportingBlock)) {
                 event.setCancelled(true);
                 player.sendMessage(
                         Component.text("[")
@@ -47,11 +48,10 @@ public class BlockPlaceListener implements Listener {
     }
 
     private Boolean hasSupportingBlock(Location currentLocation) {
-        for (int y = -64; y < currentLocation.getWorld().getMaxHeight(); y++) {
+        for (Double y = -64.0; y < currentLocation.getWorld().getMaxHeight(); y++) {
             currentLocation.setY(y);
             Material currentMaterial = currentLocation.getBlock().getBlockData().getMaterial();
-            if (!currentMaterial.equals(Material.AIR))
-                return currentMaterial.equals(plugin.supportingBlock);
+            if (!currentMaterial.equals(Material.AIR)) return currentMaterial.equals(plugin.supportingBlock);
         }
         return false;
     }
