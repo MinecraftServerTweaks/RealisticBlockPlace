@@ -1,7 +1,7 @@
 package io.github.vitelotte.realisticblockplace.listeners;
 
 import io.github.vitelotte.realisticblockplace.RealisticBlockPlace;
-import io.github.vitelotte.realisticblockplace.utils.PlaceUtil;
+import io.github.vitelotte.realisticblockplace.utils.FloatingStoneUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.block.Block;
@@ -22,7 +22,7 @@ public class BlockPlaceListener implements Listener {
         player.sendMessage(event.getBlockPlaced().getLocation().toString());
         if (!player.isOp()) {
             Block block = event.getBlock();
-            if (PlaceUtil.isFloatingStone(block)) {
+            if (FloatingStoneUtil.isFloatingStone(block)) {
                 player.sendMessage(
                         Component.text("[")
                                 .append(plugin.chatPrefixComponent)
@@ -31,7 +31,7 @@ public class BlockPlaceListener implements Listener {
                                 .append(Component.text("에서 나오는 신비로운 기운이 자신의 위에 있는 블록들을 지지합니다!"))
                 );
             }
-            else if (!PlaceUtil.existsFloatingStone(block.getLocation())) {
+            else if (!FloatingStoneUtil.existsFloatingStone(block.getLocation())) {
                 event.setCancelled(true);
                 player.sendMessage(
                         Component.text("[")
