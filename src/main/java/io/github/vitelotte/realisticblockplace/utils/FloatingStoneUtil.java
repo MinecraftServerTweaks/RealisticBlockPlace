@@ -40,9 +40,7 @@ public class FloatingStoneUtil {
             Location checkingLocation = new Location(location.getWorld(), location.x(), location.y(), location.z());
             for (Double y = location.y(); y <= location.getWorld().getMaxHeight(); y++) {
                 checkingLocation.setY(y);
-                System.out.println(checkingLocation.y());
                 Block currentBlock = checkingLocation.getBlock();
-                Material currentMaterial = currentBlock.getBlockData().getMaterial();
                 if (!isFloatingStone(currentBlock)) {
                     currentBlock.breakNaturally();
                 }

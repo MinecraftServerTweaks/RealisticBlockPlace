@@ -22,7 +22,6 @@ public class FloatingStoneBreakListener implements Listener {
             if (!Objects.isNull(tool) && FloatingStoneUtil.isFloatingStonePickaxe(tool)) {
                 Block block = event.getClickedBlock();
                 if (!Objects.isNull(block) && FloatingStoneUtil.isFloatingStone(block)) {
-                    Player player = event.getPlayer();
                     block.breakNaturally();
                     ItemStack floatingStone = new ItemStack(Material.BEDROCK);
                     block.getLocation().getWorld().dropItem(block.getLocation(), floatingStone);
