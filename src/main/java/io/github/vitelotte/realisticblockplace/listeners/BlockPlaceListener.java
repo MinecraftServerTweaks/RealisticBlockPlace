@@ -20,7 +20,7 @@ public class BlockPlaceListener implements Listener {
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
         player.sendMessage(event.getBlockPlaced().getLocation().toString());
-        if (!player.isOp()) {
+        if (true || !player.isOp()) {
             Block block = event.getBlock();
             if (FloatingStoneUtil.isFloatingStone(block)) {
                 player.sendMessage(
